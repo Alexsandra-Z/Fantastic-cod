@@ -1,0 +1,41 @@
+#include <iostream>
+ 
+int main()
+{
+	int t = 0;
+	int prm = 0; //счётчик
+	int stro = 0; //счётчик
+	int ch = 0; //счётчик
+	int n = 0;
+ 
+	std::cin >> t;
+ 
+	for (prm = 0; prm < t; prm++)
+	{
+		std::cin >> n;
+ 
+		for (stro = 0; stro < n; stro++)
+		{
+			for (ch = 0; ch < stro + 1; ch++)
+			{
+				if ((ch == 0) || (ch == stro))
+				{
+					std::cout << '1';
+				}
+				else
+				{
+					std::cout << '0';
+				}
+ 
+				if (ch != n)
+				{
+					std::cout << ' ';
+				}
+			}
+			std::cout << "\n";
+		}
+	}
+ 
+ 
+	return 0;
+}
