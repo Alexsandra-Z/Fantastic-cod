@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+#include <array>
+ 
+bool osob(const std::array<int, 26>& ch, const char& c) // проверка на особую букву
+{
+	if (ch[(static_cast<int> (c)) - static_cast<int> ('a')] == 1)
+	{
+		//std::cout << c << "\n";
+		return true;
+	}
+	return false;
+}
+ 
+int main()
+{
+	std::ios_base::sync_with_stdio(false);
+	int t = 0, n = 0, k = 0, kp = 0, kpt = 0, jp = 0;
+	char sim = '0';
+	std::cin >> t;
+	std::string s;
+	s.reserve(100000);
+	std::array<int, 26> c{0};
+ 
+	for (int i = 0; i < t; i++)
+	{
+		std::cin >> n >> s >> k;
+		kpt = 0;
+		jp = 0;
+		kp = 0;
+		c = { 0 };
+ 
+ 
+		for (int j = 0; j < k; j++)
+		{
+			std::cin >> sim;
+			c[static_cast<int> (sim) - static_cast<int> ('a')] = 1;
+		}
+ 
+		for (int j = 0; j < n; j++)
+		{
+			if (osob(c, s[j]))
+			{
+				kpt = j - jp;
+				jp = j;
+				if (kpt > kp)
+				{
+					kp = kpt;
+				}
+			}
+		}
+		std::cout << kp << "\n";
+	}
+	return 0;
+}
