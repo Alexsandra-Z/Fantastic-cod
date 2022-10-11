@@ -1,0 +1,42 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+int main() 
+{
+    int kol_0 = 0, t = 0, kol_c = 0;
+    std::cin >> t;
+    std::vector <int> ch(t);
+    
+    for (int i = 0; i < t; i ++)
+    {
+        std::cin >> ch[i];
+    }
+    // ввели все числа
+    
+    for (int i = 0; i < t; i ++)
+    {
+        std::vector <int> raz;
+        kol_0 = 0;
+        kol_c = 0;
+        while (ch[i] > 0)
+        {
+            if (ch[i] % 10 != 0)
+            {
+                raz.push_back((ch[i] % 10) * pow(10, kol_0));
+                kol_c += 1;
+                // raz - разложенное число. добавляем крайнюю цифру * кол-во нулей. считаем кол-во чисел в разложении
+            }
+            kol_0 += 1;
+            ch[i] /= 10;
+            // срезаем правую цифру. обращаемся к новому разряду
+        }
+        std::cout << kol_c << "\n";
+        for (int j = 0; j < kol_c; j ++)
+        {
+            std::cout << raz[j] << " ";
+            // выводим определённое кол-во чисел разложения
+        }
+        std::cout << "\n";
+ 
+    }
+}
