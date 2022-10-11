@@ -23,6 +23,7 @@ int main()
 	double ch = 0;
 	double sum = 0;
 	double func = 0;
+	std::cout << " x   s(x)  f(x)" << "\n";
 
 	for (double x = a; x <= b; x += q)
 	{
@@ -31,7 +32,7 @@ int main()
 		{
 			ch = pow(2 * x, i) / fact(i);
 
-			if (abs(ch) < w)
+			if (std::abs(ch) < w)
 			{
 				break;
 			}
