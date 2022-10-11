@@ -12,17 +12,25 @@ int main()
 	double ch = 0;
 	double sum = 0;
 	double func = 0;
-
+	double xi = 0;
+	std::cout << " x   s(x)  f(x)" << "\n";
 
 	for (double x = a; x <= b; x += q)
 	{
 		sum = 0;
 		func = 0;
-		for (int i = 1; i < 100000; i++)
+		xi = 1;
+		for (int i = 1; i < 1000000; i++)
 		{
-			ch = pow(x, i) * sin(i * M_PI / 4);
+			if (i % 4 == 0)
+			{
+				i++;
+			}
 
-			if (abs(ch) < w)
+			xi *= x;
+			ch = xi * sin(i * M_PI / 4);
+
+			if (std::abs(ch) < w)
 			{
 				break;
 			}
