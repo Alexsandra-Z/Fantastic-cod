@@ -21,6 +21,7 @@ int main()
 	double w = 0.001;
 	double sum = 0;
 	double ch = 0; // слагаемое
+	std::cout << " x   s(x)  f(x)" << "\n";
 
 	for (double x = a; x <= b; x += q)
 	{
@@ -34,7 +35,7 @@ int main()
 				ch = -ch;
 			}
 
-			if (abs(ch) < w)
+			if (std::abs(ch) < w)
 			{
 				break;
 			}
