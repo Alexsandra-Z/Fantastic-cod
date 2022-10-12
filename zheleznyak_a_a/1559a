@@ -1,0 +1,69 @@
+#include <iostream>
+#include <array>
+#include <cmath>
+
+int main()
+{
+	int t = 1; // кол-во наборов
+	int n = 0; // кол-во числе в наборе
+	int ch = 0; // число
+	int i = 0;
+	int j = 0;
+	int k = 0; // индексы цифр числа
+	int Min_k = 40;
+	std::array <int, 40> Min_ch = {0};
+	int otv = 0;
+
+	std::cin >> t;
+
+
+	for (i = 0; i < t; i++) // перебор наборов
+	{
+		Min_k = 40;
+		otv = 0;
+
+		for (j = 0; j < 40; j++)
+		{
+			Min_ch[j] = -1;
+		}
+
+		std::cin >> n;
+		for (j = 0; j < n; j++) // перебор чисел из набора
+		{
+			std::cin >> ch;
+			k = 0;
+			while (ch > 0) // разложение в 2 сс, редакция минимального числа
+			{
+				//std::cout << Min_ch[k];
+				if (Min_ch[k] == -1)
+				{
+					Min_ch[k] = ch % 2;
+				}
+				else
+				{
+					if ((Min_ch[k] == 1) && (ch % 2 == 0))
+					{
+						Min_ch[k] = 0;
+					}
+				}
+				//std::cout << Min_ch[k];
+
+				ch /= 2;
+				k++;
+			}
+
+			Min_k = std::min(Min_k, k);
+			//std::cout << "\n";
+		}
+		//std::cout << Min_k;
+
+		for (j = 0; j < Min_k; j++)
+		{
+			//std::cout << Min_ch[i];
+			otv += Min_ch[j] * (int)std::pow(2, j);
+		}
+		std::cout << otv << "\n";
+	}
+
+	return 0;
+}
