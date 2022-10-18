@@ -2,90 +2,77 @@
 #include <cmath>
 
 
-int main()
-{
-	int t = 0;
+int main() {
+	int t = 1;
 	int n = 0;
-	int c1 = 0, c2 = 0;
-	int x1 = 0, x2 = 0, y1 = 0, y2 = 0, x3 = 0, x4 = 0, y3 = 0, y4 = 0;
+	int c1 = 0;
+	int c2 = 0;
+	int c3 = 0;
+	int c4 = 0;
 	char c;
 
 	std::cin >> t;
 
-
-	for (int i = 0; i < t; i++)
-	{
+	for (int i = 0; i < t; i++) {
 		std::cin >> n;
+		c1 = 0;
+		c2 = 0;
+		c3 = 0;
+		c4 = 0;
 
-		for (int j = 0; j < n * n; j++)
-		{
+		for (int j = 0; j < n * n; j++) {
 			std::cin >> c;
 
-			if (c == '*')
-			{
-				if (c1 == 0)
-				{
+			if (c == '*') {
+				if (c1 == 0) {
 					c1 = j;
 				}
-				else
-				{
+				else {
 					c2 = j;
 				}
 			}
 		}
 
-		x1 = c1 % n;
-		x2 = c2 % n;
-		y1 = c1 / n;
-		y2 = c2 / n;
-
-		if (x1 == x2)
-		{
-			if (x1 < n / 2)
-			{
-				x3 = x1 + std::abs(y1 - y2);
+		if (c1 / n == c2 / n) {
+			if (c1 / n > 0) {
+				c3 = c1 % n;
+				c4 = c2 % n;
 			}
-			else
-			{
-				x3 = x1 - std::abs(y1 - y2);
+			else {
+				c3 = n + c1 % n;
+				c4 = n + c2 % n;
 			}
-			x4 = x3;
-			y3 = y1;
-			y4 = y2;
 		}
-		else 
-		{
-			if (y1 == y2)
-			{
-				if (y1 < n / 2)
-				{
-					y3 = y1 + std::abs(x1 - x2);
+		else {
+			if (c1 % n == c2 % n) {
+				if (c1 % n > 0) {
+					c3 = c1 / n * n;
+					c4 = c2 / n * n;
 				}
-				else
-				{
-					y3 = y1 - std::abs(x1 - x2);
+				else {
+					c3 = 1 + c1 / n * n;
+					c4 = 1 + c2 / n * n;
 				}
-				y4 = y3;
-				x3 = x1;
-				x4 = x2;
 			}
-			else
-			{
-				x3 = x2;
-				y3 = y1;
-				x4 = x1;
-				y4 = y2;
+			else {
+				c3 = c1 / n * n + (c2 % n);
+				c4 = c2 / n * n + (c1 % n);
 			}
 		}
 
-		for (int j = 0; j < n * n; j++)
-		{
-
+		int ct = 0;
+		for (int j = 0; j < n; j++) {
+			for (int k = 0; k < n; k++) {
+				if ((c1 == ct) || (c2 == ct) || (c3 == ct) || (c4 == ct)) {
+					std::cout << '*';
+				}
+				else {
+					std::cout << '.';
+				}
+				ct++;
+			}
+			std::cout << "\n";
 		}
-
-
 	}
-
-
 	return 0;
 }
