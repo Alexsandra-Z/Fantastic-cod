@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cmath>
 
-
 int main() {
 	int t = 1;
 	int n = 0;
