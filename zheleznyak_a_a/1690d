@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>
+
+int main() {
+
+	int t = 1;
+	std::cin >> t;
+
+	for (int i = 0; i < t; i += 1) {
+		int dl_str = 0;
+		int k_black = 0;
+		std::string str;
+		int k_black_t = 0;
+		int need_kl = 0;
+		int need_kl_min = 0;
+
+		std::cin >> dl_str >> k_black >> str;
+
+		for (int ind_str = 0; ind_str < k_black; ind_str += 1) {
+			if (str[ind_str] == 'B') {
+				k_black_t += 1;
+			}
+		}
+
+		need_kl_min = k_black - k_black_t;
+
+		for (int ind_str = k_black; ind_str < dl_str; ind_str += 1) {
+			if (str[ind_str] == 'B') {
+				k_black_t += 1;
+			}
+
+			if (str[ind_str - k_black] == 'B') {
+				k_black_t -= 1;
+			}
+
+			need_kl = k_black - k_black_t;
+
+			if (need_kl < need_kl_min) {
+				need_kl_min = need_kl;
+			}
+			
+		}
+		std::cout << need_kl_min << "\n";
+	}
+	return 0;
+}
