@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+
+int main() {
+	int t = 1;
+	std::cin >> t;
+
+	for (int i = 0; i < t; i += 1) {
+		int dl_picture = 0;
+		std::string str;
+		int k_red = 0;
+		int k_blu = 0;
+		std::string answer = "Yes"; // если нет R и B, то условие выполняется
+		std::cin >> dl_picture >> str;
+
+		for (int i_sim = 0; i_sim < dl_picture; i_sim += 1) {
+			switch (str[i_sim]) {
+			case 'R':
+				k_red += 1;
+				break;
+			case 'B':
+				k_blu += 1;
+				break;
+			case 'W':
+				if (k_red + k_blu > 0) {
+					if ((k_red < 1) || (k_blu < 1) || (k_red + k_blu < 2)) {
+						answer = "No";
+					}
+				}
+				k_red = 0;
+				k_blu = 0;
+				break;
+			}
+
+			if (i_sim == dl_picture - 1) {
+				if (k_red + k_blu > 0) {
+					if ((k_red < 1) || (k_blu < 1) || (k_red + k_blu < 2)) {
+						answer = "No";
+					}
+				}
+			}
+
+			if (answer == "No") {
+				break;
+			}
+		}
+		std::cout << answer << "\n";
+	}
+	return 0;
+}
