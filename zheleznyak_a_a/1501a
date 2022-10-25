@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector> 
+
+int main() {
+	int t = 1;
+	std::cin >> t;
+
+	for (int i = 0; i < t; i += 1) {
+		int n = 0;
+		int ch = 0;
+		int time = 0;
+		std::cin >> n;
+
+		std::vector<int> a;
+		a.reserve(n);
+		std::vector<int> b;
+		b.reserve(n);
+		std::vector<int> tm;
+		tm.reserve(n);
+
+		for (int ind = 0; ind < n; ind += 1) {
+			std::cin >> ch;
+			a.push_back(ch);
+			std::cin >> ch;
+			b.push_back(ch);
+		}
+
+		for (int ind = 0; ind < n; ind += 1) {
+			std::cin >> ch;
+			tm.push_back(ch);
+		}
+
+		time = a[0] + tm[0];
+		if (n > 1) {
+			time = std::max(time + (b[0] - a[0] + 1) / 2, b[0]);
+		}
+
+		for (int ind = 1; ind < n; ind += 1) {
+			time += a[ind] - b[ind - 1] + tm[ind];
+			if (ind != n - 1) {
+				time = std::max(time + (b[ind] - a[ind] + 1) / 2, b[ind]);
+			}
+		}
+		std::cout << time << "\n";
+	}
+	return 0;
+}
