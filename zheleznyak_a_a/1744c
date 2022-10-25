@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+
+int main() {
+	std::ios_base::sync_with_stdio(false);
+	std::string str;
+	int t = 1;
+	std::cin >> t;
+
+	for (int i = 0; i < t; i += 1) {
+		int n = 0;
+		char c = '0';
+		int diff = 0;
+		int max_diff = 0;
+		std::cin >> n >> c >> str;
+
+		for (int i_c = 0; i_c < n; i_c += 1) {
+			int i_g = i_c;
+			if (str[i_c] == c) {
+
+				for (i_g = i_c; i_g < i_c + n; i_g += 1) {
+
+					if (str[(i_g) % n] == 'g') {
+						diff = i_g - i_c;
+						break;
+					}
+				}
+				max_diff = std::max(max_diff, diff);
+			}
+
+			if (max_diff == n - 1) { // при максимальном времени не надо перебирать остальные
+				break;
+			}
+			i_c = i_g; // чтобы не перебирать c, которые ближе к 'g', чем текущая
+		}
+		std::cout << max_diff << "\n";
+	}
+	return 0;
+}
