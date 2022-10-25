@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+
+int main() {
+	int t = 1;
+	std::cin >> t;
+
+	for (int i = 0; i < t; i += 1) {
+		std::string str;
+		std::cin >> str;
+		int ind_1 = 0;
+		int ind_0 = str.size() - 1;
+		int answer = 0;
+
+		for (int i_str = 0; i_str < str.size(); i_str += 1) {
+			switch (str[i_str]) {
+			case '0':
+				ind_0 = i_str;
+				// количество подозреваемых = индекс первого '0' - индекс последней '1' + 1.
+				answer = ind_0 - ind_1 + 1;
+				break;
+			case '1':
+				ind_1 = i_str;
+				break;
+			}
+
+			if (answer != 0) {
+				break;
+			}
+		}
+		if (answer == 0) {
+			answer = ind_0 - ind_1 + 1;
+		}
+
+		std::cout << answer << "\n";
+	}
+	return 0;
+}
