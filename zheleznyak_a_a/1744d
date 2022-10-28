@@ -1,0 +1,62 @@
+#include <iostream>
+#include <cmath>
+
+int Ks2(int ch) {
+    int k_s = 0;
+    while (ch % 2 == 0) {
+        k_s += 1;
+        ch /= 2;
+    }
+    return k_s;
+}
+
+int Kis(int p, int n) {
+    int ki = 0;
+    int p2 = int(pow(2, p));
+    for (int i = 1; i <= n; i += 1) {
+        if ((i % p2 == 0) && (i % (p2 * 2) != 0)) {
+            ki += 1;
+        }
+    }
+    return ki;
+}
+
+int main() {
+    int t = 1;
+    std::cin >> t;
+
+    for (int i = 0; i < t; i += 1) {
+        int n = 0;
+        std::cin >> n;
+        int k_s2 = 0;
+        int ch = 0;
+        int k_oper = 0;
+        int step = 0;
+
+        for (int i_ch = 0; i_ch < n; i_ch += 1) {
+            std::cin >> ch;
+            k_s2 += Ks2(ch);
+        }
+        
+        step = int(log2(n));
+        while ((k_s2 < n) && (step > 0)) {
+            int k_is = Kis(step, n);
+            for (int i_is = 0; i_is < k_is; i_is += 1) {
+                k_s2 += step;
+                k_oper += 1;
+                if (k_s2 >= n) {
+                    break;
+                }
+            }
+            step -= 1;
+        }
+
+        if (k_s2 >= n) {
+            std::cout << k_oper << "\n";
+        }
+        else {
+            std::cout << -1 << "\n";
+        }
+    }
+    return 0;
+}
