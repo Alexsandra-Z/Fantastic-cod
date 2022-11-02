@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main() {
+    int n = 0;
+    std::cin >> n;
+    std::vector<int> cnts;
+    int cnt = 0;
+    
+    for (int i = 0; i < n; i += 1) {
+        std::cin >> cnt;
+        cnts.push_back(cnt);
+    }
+
+    std::sort(cnts.begin(), cnts.end());
+    
+    int i_day = 1;
+    int i_cnts = 0;
+    while ((i_day <= n) && (i_cnts < n)) {
+        if (i_day <= cnts[i_cnts]) {
+            i_day += 1;
+            i_cnts += 1;
+        }
+        else {
+            i_cnts += 1;
+        }
+    }
+    std::cout << i_day - 1;
+    return 0;
+}
