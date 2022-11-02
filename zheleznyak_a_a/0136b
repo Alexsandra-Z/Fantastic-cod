@@ -16,38 +16,27 @@ int main()
 	std::cin >> a >> c;
  
 	i = 0;
-	while (a > 0)
-	{
+	while (a > 0) {
 		a3[i] = a % 3;
-		//std::cout << a3[i];
 		i++;
 		a /= 3;
 	}
-	//std::cout << "\n";
 	i = 0;
-	while (c > 0)
-	{
+	while (c > 0) {
 		c3[i] = c % 3;
-		//std::cout << c3[i];
 		i++;
 		c /= 3;
 	}
-	//std::cout << "\n";
-	
-	//Max_a_c = std::max(std::size(a3), std::size(c3));
  
-	for (i = 0; i < std::size(a3); i++)
-	{
+	for (i = 0; i < std::size(a3); i++) {
 		//b3[i] = ((i < std::size(c3) ? c3[i] : 0) - (i < std::size(a3) ? a3[i] : 0) + 3) % 3;
 		b3[i] = (c3[i] - a3[i] + 3) % 3;
 		//std::cout << b3[i];
 	}
  
-	for (i = 0; i < std::size(b3); i++)
-	{
+	for (i = 0; i < std::size(b3); i++) {
 		b += b3[i] * std::pow(3, i);
 	}
 	std::cout << b;
- 
 	return 0;
 }
