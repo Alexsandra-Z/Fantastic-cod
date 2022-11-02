@@ -1,25 +1,21 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
-int main() 
-{
+
+int main() {
     long long int u = -(10e10);
     int k = 0, n = 0, ut = 0, f = 0, t = 0;
     std::cin >> n >> k;
-    for (int i = 0; i < n; i ++)
-    {
+    for (int i = 0; i < n; i ++) {
         std::cin >> f >> t;
-        if (t > k)
-        {
+        if (t > k) {
             ut = f - (t - k);
         }
-        else 
-        {
+        else {
             ut = f;
         }
         
-        if (ut > u)
-        {
+        if (ut > u) {
             u = ut;
         }
     }
