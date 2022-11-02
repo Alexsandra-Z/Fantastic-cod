@@ -1,11 +1,10 @@
 #include <iostream>
-int main() 
-{
+
+int main() {
     int k = 0, r = 0, lop = 1;
     std::cin >> k >> r;
     
-    while (((k * lop) % 10 != 0) && ((k * lop) % 10 != r))
-    {
+    while (((k * lop) % 10 != 0) && ((k * lop) % 10 != r)) {
         lop += 1;
     }
     std::cout << lop;
