@@ -4,8 +4,8 @@
 
 int main() {
     int n = 0;
-    int A = 0;
-    int B = 0;
+    int A = 0; // всего воды в системе
+    int B = 0; // надо чтобы вытекло из 1 трубы
     std::cin >> n >> A >> B;
     std::vector<int> otv;
     otv.reserve(n);
@@ -22,13 +22,11 @@ int main() {
         S += otver;
     }
     std::sort(otv.begin(), otv.end());
-    i_otv = n - 1;
+    i_otv = n - 2;
     while ((otver_1 * A / S) < B) {
-        A -= otv[i_otv] * A / S;
-        S -= otv[i_otv];
+        S -= otv[i_otv]; // убираем размер отверстия
         k_zat += 1;
         i_otv -= 1;
-        //std::cout << i_otv;
     }
     std::cout << k_zat;
     return 0;
