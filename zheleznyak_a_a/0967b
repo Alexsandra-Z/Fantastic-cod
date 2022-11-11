@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main() {
+    int n = 0;
+    int A = 0;
+    int B = 0;
+    std::cin >> n >> A >> B;
+    std::vector<int> otv;
+    otv.reserve(n);
+    int otver = 0;
+    int otver_1 = 0;
+    std::cin >> otver_1;
+    int S = otver_1;
+    int i_otv = 0;
+    int k_zat = 0;
+    
+    for (i_otv = 1; i_otv < n; i_otv += 1) {
+        std::cin >> otver;
+        otv.push_back(otver);
+        S += otver;
+    }
+    std::sort(otv.begin(), otv.end());
+    i_otv = n - 1;
+    while ((otver_1 * A / S) < B) {
+        A -= otv[i_otv] * A / S;
+        S -= otv[i_otv];
+        k_zat += 1;
+        i_otv -= 1;
+        //std::cout << i_otv;
+    }
+    std::cout << k_zat;
+    return 0;
+}
