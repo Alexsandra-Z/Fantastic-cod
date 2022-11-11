@@ -1,0 +1,23 @@
+#include <iostream>
+#include <array>
+
+int main() {
+    int n = 0;
+    std::cin >> n;
+    std::array<int, 4> ball{ 0 };
+    int ball_tom = 0;
+    int ball_stud = 0;
+    int k_stud = 0;
+    std::cin >> ball[0] >> ball[1] >> ball[2] >> ball[3];
+    ball_tom = ball[0] + ball[1] + ball[2] + ball[3];
+
+    for (int i_stud = 1; i_stud < n; i_stud += 1) {
+        std::cin >> ball[0] >> ball[1] >> ball[2] >> ball[3];
+        ball_stud = ball[0] + ball[1] + ball[2] + ball[3];
+        if (ball_stud > ball_tom) {
+            k_stud += 1;
+        }
+    }
+    std::cout << k_stud + 1;
+    return 0;
+}
