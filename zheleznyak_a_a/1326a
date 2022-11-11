@@ -3,8 +3,7 @@
 #include <string>
 #include <cmath>
  
-int main()
-{
+int main() {
 	int t = 1; // количество строк ввода
 	std::cin >> t;
 	int flag = 0; // проверка на пригодность числа
@@ -12,48 +11,36 @@ int main()
 	std::string ch_str = ""; // строчная запись проверяемого числа
 	int c = 0; // цифра проверяемого числа
  
- 
-	for (int i = 0; i < t; i++)
-	{
+	for (int i = 0; i < t; i++) {
 		std::cin >> n;
  
-		for (int ch = pow(10, n - 1); ch < pow(10, n); ch ++) // перебор чесел
-		{
+		for (int ch = pow(10, n - 1); ch < pow(10, n); ch ++) {
 			ch_str = std::to_string(ch);
-			//std::cout << ch << "\n";
 			flag = 1;
  
-			for (char j : ch_str) // перебоор цифр числа
-			{
+			for (char j : ch_str) {
 				c = j - '0';
-				//std::cout << c << ' ';
  
-				if ((c == 0) || (c == 1) || (c == 5)) // проверки по заданию
-				{
+				if ((c == 0) || (c == 1) || (c == 5)) {
 					flag = 0;
 					break;
 				}
-				else 
-				{
-					if (ch % c == 0)
-					{
+				else {
+					if (ch % c == 0) {
 						flag = 0;
 						break;
 					}
 				}
 			}
  
-			if (flag == 1)
-			{
+			if (flag == 1) {
 				std::cout << ch << "\n";
 				break;
 			}
 		}
-		if (flag == 0)
-		{
+		if (flag == 0) {
 			std::cout << -1 << "\n";
 		}
 	}
- 
 	return 0;
 }
