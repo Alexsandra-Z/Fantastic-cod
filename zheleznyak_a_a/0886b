@@ -1,0 +1,26 @@
+#include <iostream>
+#include <vector>
+#include <set>
+
+int main() {
+    int n = 0;
+    std::cin >> n;
+    std::vector<int> stols;
+    stols.reserve(n);
+    int stol = 0;
+    std::set<int> last_stols;
+    int last_stol = 0;
+
+    for (int i = 0; i < n; i += 1) {
+        std::cin >> stol;
+        stols.push_back(stol);
+    }
+    for (int i_stols = n - 1; i_stols >= 0; i_stols -= 1) {
+        if (last_stols.find(stols[i_stols]) == last_stols.end()) {
+            last_stols.insert(stols[i_stols]);
+            last_stol = stols[i_stols];
+        }
+    }
+    std::cout << last_stol;
+    return 0;
+}
