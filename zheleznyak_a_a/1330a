@@ -1,53 +1,41 @@
 #include <iostream>
 #include <vector>
-int main() 
-{
+
+int main() {
     int u = 0, n = 0, x = 0, t = 0;
     std::cin >> t;
     std::vector <int> otv(t);
-    for (int i = 0; i < t; i ++)
-    {
+    for (int i = 0; i < t; i ++) {
         std::vector <int> a;
         std::cin >> n >> x;
         int a1 = 0;
         
-        for (int l = 0; l < n; l ++)
-        {
+        for (int l = 0; l < n; l ++) {
             std::cin >> a1;
             a.push_back(a1);
-        };
+        }
         
-        for (int j = 1; j <= 300; j ++) //перебираем числа от 1 до 100
-        {
+        for (int j = 1; j <= 300; j ++) {
             int est = 0;
-            
-            for (int k = 0; k < n; k ++) //перебираем числа массива на совпадение с нужным
-            {
-                if (a[k] == j)
-                {
+            for (int k = 0; k < n; k ++) {
+                if (a[k] == j) {
                     est = 1;
                     break;
                 }
             }
             
-            if (est == 0)
-            {
-                if (x > 0)
-                {
+            if (est == 0) {
+                if (x > 0) {
                     x -= 1;
                 }
-                else
-                {
+                else {
                     otv[i] = j - 1;
                     break;
                 }
             }
         }
-        
     }
-    
-    for (int i : otv)
-    {
+    for (int i : otv) {
         std::cout << i << "\n";
     }
 }
