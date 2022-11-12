@@ -2,19 +2,15 @@
 #include <cmath>
 #include <iomanip>
 
-int fact(int a)
-{
+int fact(int a) {
 	int otv = 1;
-
-	for (int i = 2; i <= a; i++)
-	{
+	for (int i = 2; i <= a; i++) {
 		otv *= i;
 	}
 	return otv;
 }
 
-int main()
-{
+int main() {
 	int a = -1;
 	int b = 1;
 	double q = 0.1;
@@ -23,29 +19,20 @@ int main()
 	double ch = 0; // слагаемое
 	std::cout << " x   s(x)  f(x)" << "\n";
 
-	for (double x = a; x <= b; x += q)
-	{
+	for (double x = a; x <= b; x += q) {
 		sum = 0;
-		for (int i = 0; i < 100000; i++)
-		{
+		for (int i = 0; i < 100000; i++) {
 			ch = std::pow(x, 2 * i) / fact(2 * i);
-
-			if (i % 2 != 0)
-			{
+			if (i % 2 != 0) {
 				ch = -ch;
 			}
-
-			if (std::abs(ch) < w)
-			{
+			if (std::abs(ch) < w) {
 				break;
 			}
-
 			sum += ch;
 		}
-
 		std::cout << std::fixed << std::setprecision(1) << x << ' ';
 		std::cout << std::setprecision(3) << sum << ' ' << std::cos(x) << "\n";
 	}
-
 	return 0;
 }
