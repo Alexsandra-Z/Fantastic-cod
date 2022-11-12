@@ -2,40 +2,32 @@
 #include <vector>
 #include <cmath>
 #include <string>
-int main() 
-{
+
+int main() {
     int t = 0, n = 0;
     std::cin >> t;
     std::string s1 = "", s2 = "";
     std::vector <int> otvet;
     
-    for (int i = 0; i < t; i++)
-    {
+    for (int i = 0; i < t; i++) {
         std::cin >> n >> s1 >> s2;
         int flag = 1;
-        for (int j = 0; j < n; j++)
-        {
-            if (((s1[j] == 'R') && (s2[j] == 'R')) || ((s1[j] != 'R') && (s2[j] != 'R')))
-            {
+        for (int j = 0; j < n; j++) {
+            if (((s1[j] == 'R') && (s2[j] == 'R')) || ((s1[j] != 'R') && (s2[j] != 'R'))) {
             }
-            else
-            {
+            else {
                 flag = 0;
             }
         }
         
         otvet.push_back(flag);
     }
-    for (int i = 0; i < t; i++)
-    {
-        if (otvet[i] == 1)
-        {
+    for (int i = 0; i < t; i++) {
+        if (otvet[i] == 1) {
             std::cout << "YES" << "\n";
         }
-        else
-        {
+        else {
             std::cout << "NO" << "\n";
         }
     }
-    
 }
