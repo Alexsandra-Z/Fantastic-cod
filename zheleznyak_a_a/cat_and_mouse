@@ -1,0 +1,60 @@
+#include "vectors.hpp"
+#include <iostream>
+#include <string>
+
+std::string Life_or_death(const double& dt, const double& mod_u_mouse_start, Rdec2D& r_mouse,
+    const double& mod_u_cat_start, Rdec2D& r_cat, const double& r_kill) {
+
+    // значения мыши
+    Rdec2D u_mouse = (Rdec2D{ 0.0, 0.0 } - r_mouse) / Norm(Rdec2D{ 0.0, 0.0 } - r_mouse) * mod_u_mouse_start;
+    Rdec2D dr_mouse;
+    Rdec2D past_r_mouse = r_mouse;
+
+    // значения кошки
+    Rdec2D u_cat = (r_mouse - r_cat) / Norm(r_mouse - r_cat) * mod_u_cat_start;
+    Rdec2D dr_cat;
+    Rdec2D past_r_cat = r_cat;
+
+    for (double t = 0; t < 1000; t += dt) {
+        // работа с мышью
+        u_mouse = (Rdec2D{ 0.0, 0.0 } - r_mouse) / Norm(Rdec2D{ 0.0, 0.0 } - r_mouse) * mod_u_mouse_start;
+        dr_mouse = u_mouse * dt;
+        r_mouse += dr_mouse;
+
+        // работа с кошкой
+        u_cat = (r_mouse - r_cat) / Norm(r_mouse - r_cat) * mod_u_cat_start;
+        dr_cat = u_cat * dt;
+        r_cat += dr_cat;
+
+        // выход из цикла
+        if (r_mouse.y >= 0) {
+            return "mouse won";
+        }
+        else {
+            if (Norm(r_mouse - r_cat) <= r_kill) {
+                return "mouse died";
+            }
+            else {
+                if (Norm(r_mouse - r_cat) >= Norm(past_r_mouse - past_r_cat)) {
+                    return "mouse will win";
+                }
+            }
+        }
+        past_r_mouse = r_mouse;
+        past_r_cat = r_cat;
+    }
+}
+
+int main() {
+    const double dt = 0.001;
+    // описание мыши
+    Rdec2D r_mouse{ 0.0, -3.0 };
+    double mod_u_mouse_start = 1.0;
+
+    // описание кошки
+    Rdec2D r_cat{ 3.0, 0.0 };
+    double r_kill = 0.001;
+    double mod_u_cat_start = 1.0;
+
+    std::cout << Life_or_death(dt, mod_u_mouse_start, r_mouse, mod_u_cat_start, r_cat, r_kill);
+}
