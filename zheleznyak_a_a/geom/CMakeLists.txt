@@ -1,0 +1,1 @@
+﻿add_library(geom vectors.cpp vectors.hpp)
